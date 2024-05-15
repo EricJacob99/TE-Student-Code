@@ -184,4 +184,19 @@ public class Lecture {
         return 0.0;
     }
 
+    int rate;
+    public int interestRate(int creditScore) {
+        if (creditScore >= 800 && creditScore <= 850) {
+            rate = 3;
+        } else if (creditScore >= 740 && creditScore <= 799) {
+            rate = 4;
+        } else if (creditScore >= 670 && creditScore <= 739) {
+            rate = 5;
+        } else if (creditScore >= 300 && creditScore <= 579) {
+            rate = 6;
+        } else {
+            rate = 150;
+        }
+         return rate;
+    }
 }
