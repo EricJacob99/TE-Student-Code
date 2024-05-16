@@ -43,7 +43,8 @@ public class Exercise01_StoreOrders {
 	 createOrder() → [10, 40, 31, 41]
      */
     public int[] createOrder() {
-        return new int[] {};
+        int [] order = new int[] {SMALL_CHEESE, CALZONE, LARGE_PEPPERONI, SPAGHETTI_PIE};
+        return order;
     }
 
     /*
@@ -61,7 +62,15 @@ public class Exercise01_StoreOrders {
     getCalzoneSales([]) → 0
      */
     public int getCalzoneSales(int[] orders) {
-        return 0;
+        int numberOfCalzones = 0;
+        int i = (orders.length - 1);
+        while (i >= 0) {
+            if (orders[i] == CALZONE) {
+                numberOfCalzones++;
+            }
+            i--;
+        }
+        return numberOfCalzones;
     }
 
     /*
@@ -79,6 +88,20 @@ public class Exercise01_StoreOrders {
     getCheesePizzaRevenue([SMALL_PEPPERONI, MEDIUM_PEPPERONI]) → 0
      */
     public int getCheesePizzaRevenue(int[] orders) {
-        return 0;
+        int numberOfSmallCheesePizzas = 0;
+        int numberOfMediumCheesePizzas = 0;
+        int numberOfLargeCheesePizzas = 0;
+        int i = (orders.length - 1);
+        while (i >= 0) {
+            if (orders[i] == SMALL_CHEESE) {
+                numberOfSmallCheesePizzas++;
+            } else if (orders[i] == MEDIUM_CHEESE) {
+                numberOfMediumCheesePizzas++;
+            } else if (orders[i] == LARGE_CHEESE) {
+                numberOfLargeCheesePizzas++;
+            }
+            i--;
+        }
+        return ((numberOfSmallCheesePizzas*8)+(numberOfMediumCheesePizzas*11)+(numberOfLargeCheesePizzas*14));
     }
 }
