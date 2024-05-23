@@ -1,7 +1,9 @@
 package com.techelevator;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Exercises {
 
@@ -22,7 +24,18 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, String> animalGroupName() {
-		return null;
+		Map<String,String> animalGroupNames = new HashMap<>();
+		animalGroupNames.put("rhino", "crash");
+		animalGroupNames.put("giraffe", "tower");
+		animalGroupNames.put("elephant", "herd");
+		animalGroupNames.put("lion", "pride");
+		animalGroupNames.put("crow", "murder");
+		animalGroupNames.put("pigeon", "kit");
+		animalGroupNames.put("flamingo", "pat");
+		animalGroupNames.put("deer", "herd");
+		animalGroupNames.put("dog", "pack");
+		animalGroupNames.put("crocodile", "float");
+		return animalGroupNames;
 	}
 
 	/*
@@ -47,7 +60,13 @@ public class Exercises {
 	 *
 	 */
 	public double isItOnSale(Map<String, Double> itemsOnSale, String itemNumber) {
-		return -1.0;
+		if (!itemsOnSale.isEmpty() && itemsOnSale.get(itemNumber) != null && itemsOnSale.containsKey(itemNumber.toUpperCase())) {
+			return itemsOnSale.get(itemNumber.toUpperCase());
+		} else if (itemNumber != null && itemsOnSale.get(itemNumber) == null && itemsOnSale.get(itemNumber.toUpperCase()) != null){
+			return itemsOnSale.get(itemNumber.toUpperCase());
+		} else {
+			return 0.00;
+		}
 	}
 
 	/*
@@ -63,7 +82,11 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) {
-		return null;
+		if (peterPaul.get("Peter") > 0 && peterPaul.get("Paul") < 1000) {
+			peterPaul.put("Paul", (peterPaul.get("Paul") + (peterPaul.get("Peter") / 2)));
+			peterPaul.put("Peter", (peterPaul.get("Peter") - peterPaul.get("Peter") / 2));
+		}
+		return peterPaul;
 	}
 
 	/*
@@ -76,7 +99,12 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> peterPaulPartnership(Map<String, Integer> peterPaul) {
-		return null;
+		if (peterPaul.get("Peter") >= 5000 && peterPaul.get("Paul") >= 10000) {
+			peterPaul.put("Partnership", ((peterPaul.get("Peter") / 4) + (peterPaul.get("Paul") / 4)));
+			peterPaul.put("Paul", (peterPaul.get("Paul") - (peterPaul.get("Paul") / 4)));
+			peterPaul.put("Peter", (peterPaul.get("Peter") - (peterPaul.get("Peter") / 4)));
+		}
+		return peterPaul;
 	}
 
 	/*
@@ -91,7 +119,12 @@ public class Exercises {
 	 * beginningAndEnding(["muddy", "good", "moat", "good", "night"]) → {"g": "d", "m": "t", "n": "t"}
 	 */
 	public Map<String, String> beginningAndEnding(String[] words) {
-		return null;
+		Set beginningEnding = new HashSet();
+		for (int i = 0; i < words.length; i++) {
+			beginningEnding.add(words[i].startsWith());
+			beginningEnding.add(words[i].endsWith());
+		}
+		return String.valueOf(beginningEnding);
 	}
 
 	/*
