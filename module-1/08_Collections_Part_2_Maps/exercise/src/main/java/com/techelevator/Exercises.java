@@ -119,12 +119,11 @@ public class Exercises {
 	 * beginningAndEnding(["muddy", "good", "moat", "good", "night"]) → {"g": "d", "m": "t", "n": "t"}
 	 */
 	public Map<String, String> beginningAndEnding(String[] words) {
-		Set beginningEnding = new HashSet();
+		Map<String, String> beginningEnding = new HashMap<String, String>();
 		for (int i = 0; i < words.length; i++) {
-			beginningEnding.add(words[i].startsWith());
-			beginningEnding.add(words[i].endsWith());
+			beginningEnding.put(String.valueOf(words[i].charAt(0)), String.valueOf(words[i].charAt(words[i].length()-1)));
 		}
-		return String.valueOf(beginningEnding);
+		return (beginningEnding);
 	}
 
 	/*
@@ -140,7 +139,17 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> wordCount(String[] words) {
-		return null;
+		Map<String, Integer> wordNums = new HashMap<String, Integer>();
+		for (int i = 0; i < words.length; i++) {
+			int wordAppearances = 0;
+			for (int j = 0; j < words.length; j++) {
+				if (words[i] == words[j]) {
+					wordAppearances++;
+				}
+			}
+			wordNums.put(words[i], wordAppearances);
+		}
+		return (wordNums);
 	}
 
 	/*
@@ -155,7 +164,17 @@ public class Exercises {
 	 *
 	 */
 	public Map<Integer, Integer> integerCount(int[] ints) {
-		return null;
+		Map<Integer, Integer> intCount = new HashMap<Integer, Integer>();
+		for (int i = 0; i < ints.length; i++) {
+			int intAppearances = 0;
+			for (int j = 0; j < ints.length; j++) {
+				if (ints[i] == ints[j]) {
+					intAppearances++;
+				}
+			}
+			intCount.put(ints[i], intAppearances);
+		}
+		return (intCount);
 	}
 
 	/*
@@ -168,7 +187,17 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Boolean> wordMultiple(String[] words) {
-		return null;
+		Map<String, Boolean> wordNums = new HashMap<String, Boolean>();
+		for (int i = 0; i < words.length; i++) {
+			boolean wordAppearsTwice = false;
+			for (int j = 0; j < words.length; j++) {
+				if (words[i] == words[j] && i!=j) {
+					wordAppearsTwice = true;
+				}
+			}
+			wordNums.put(words[i], wordAppearsTwice);
+		}
+		return (wordNums);
 	}
 
 	/*
@@ -183,7 +212,22 @@ public class Exercises {
 	 */
 	public Map<String, Integer> consolidateInventory(Map<String, Integer> mainWarehouse,
 			Map<String, Integer> remoteWarehouse) {
-		return null;
+		Map<String, Integer> totalInventory = new HashMap<String, Integer>();
+		Set<String> mainKeys = mainWarehouse.keySet();
+		Set<String> remoteKeys = remoteWarehouse.keySet();
+		for (String mainKey : mainKeys) {
+			if (remoteWarehouse.containsKey(mainKey)) {
+					totalInventory.put(mainKey, (mainWarehouse.get(mainKey) + remoteWarehouse.get(mainKey)));
+				} else {
+					totalInventory.put(mainKey, mainWarehouse.get(mainKey));
+				}
+		}
+		for (String remoteKey : remoteKeys) {
+			if (!mainWarehouse.containsKey(remoteKey)) {
+				totalInventory.put(remoteKey, remoteWarehouse.get(remoteKey));
+			}
+		}
+		return totalInventory;
 	}
 
 	/*
@@ -202,7 +246,19 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> last2Revisited(String[] words) {
-		return null;
+		Map<String, Integer> lastTwo = new HashMap<String, Integer>();
+		for (int i = 0; i < words.length; i++) {
+			int lastTwoCount = 0;
+			for (int j = 0; j < words[i].length()-3; j++) {
+				String lasTwo = words[i].substring(words[i].length()-2);
+				String substring = words[i].substring(j,j+2);
+				if (substring.equals(lasTwo)) {
+					lastTwoCount++;
+				}
+			}
+			lastTwo.put(words[i], lastTwoCount);
+		}
+		return lastTwo;
 	}
 
 }
