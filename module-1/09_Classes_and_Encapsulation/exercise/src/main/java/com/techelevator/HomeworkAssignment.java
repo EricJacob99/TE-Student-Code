@@ -7,7 +7,7 @@ public class HomeworkAssignment {
 
     private String submitterName;
 
-    private String letterGrade;
+    //private String letterGrade;
 
     public HomeworkAssignment(int possibleMarks, String submitterName) {
         this.possibleMarks = possibleMarks;
@@ -30,7 +30,7 @@ public class HomeworkAssignment {
         return submitterName;
     }
 
-    public String getLetterGrade(int earnedMarks, int possibleMarks) {
+    public String getLetterGrade() {
         String result;
         double percentage = (double) earnedMarks / (double) possibleMarks;
         if (percentage >= 0.9) {
