@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public class BankAccount {
+public class BankAccount implements Acountable {
 
     private final String accountIdentifier;
     private int balance;
