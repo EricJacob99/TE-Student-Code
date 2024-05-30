@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public class BankAccount implements Acountable {
+public class BankAccount implements Accountable {
 
     private final String accountIdentifier;
     private int balance;
@@ -41,6 +41,14 @@ public class BankAccount implements Acountable {
             return true;
         }
         return false;
+    }
+
+    public int transferFunds(BankAccount destinationAccount, int amountToTransfer) {
+        if (this.balance >= amountToTransfer && amountToTransfer > 0) {
+            this.balance = this.balance - amountToTransfer;
+            destinationAccount.balance = destinationAccount.balance + amountToTransfer;
+        }
+        return this.balance;
     }
 
 }
