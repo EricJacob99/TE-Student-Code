@@ -1,6 +1,14 @@
 package com.techelevator;
 
-public class RectangleWall {
+import static java.lang.String.valueOf;
+
+public class RectangleWall extends Wall {
+
+    public RectangleWall(String name, String color,int length, int height) {
+        super(name, color);
+        this.length = length;
+        this.height = height;
+    }
 
     private int length;
 
@@ -14,15 +22,12 @@ public class RectangleWall {
         return height;
     }
 
-    public RectangleWall(String name, String color, int length, int height) {
-    }
-
-
-    public int getArea(int length, int height) {
-        return length * height;
-    }
-
     public String toString(String name, int length, int height) {
-        return (name + " (" + this.length + "x" + this.height + ") rectangle");
+        return (name + " (" + length + "x" + height + ") rectangle");
+    }
+
+    @Override
+    public int getArea() {
+        return (length*height);
     }
 }
