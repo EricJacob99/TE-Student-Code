@@ -22,9 +22,12 @@ public class Module1CodingAssessment {
 		rentals.add(jurassicParkRental);
 		rentals.add(bambiRental);
 
-//		for (MovieRental rental : rentals) {
-//			System.out.println(rental.toString());
-//		}
+		printMovieList(rentals);
+	}
+	private void printMovieList(List<MovieRental> rentals) {
+		for (MovieRental rental : rentals) {
+			System.out.println(rental.toString());
+		}
 	}
 
 }

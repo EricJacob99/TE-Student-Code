@@ -5,6 +5,7 @@ public class MovieRental {
     private String format;
     private Boolean isPremium;
     private Double rentalPrice;
+    private int daysLate;
 
     public String getTitle() {
         return title;
@@ -37,10 +38,26 @@ public class MovieRental {
         return price;
     }
 
+    public int getDaysLate() {
+        return daysLate;
+    }
+
     public MovieRental(String title, String format, Boolean isPremium) {
         this.title = title;
         this.format = format;
         this.isPremium = isPremium;
+    }
+
+    public double lateFee() {
+        if (daysLate >= 3){
+            return 19.99;
+        } else if (daysLate == 2){
+            return 3.99;
+        } else if (daysLate == 1){
+            return 1.99;
+        } else {
+            return 0.00;
+        }
     }
 
     @Override
