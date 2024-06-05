@@ -13,42 +13,36 @@ private CigarParty cigarParty;
     public void setup() {
 
         cigarParty = new CigarParty();
-        System.out.println("Before");
 
     }
 
     @Test
-    public void test() {
-        // Happy Path
+    public void testCigarPartyHappyPath() {
 
-        Assert.assertEquals(, );
-        Assert.assertEquals(, );
-
-    }
-
-    @Test
-    public void test() {
-        // Edge Cases
-
-        Assert.assertEquals(, );
-        Assert.assertEquals(, );
+        Assert.assertEquals(true, cigarParty.haveParty(50, false));
+        Assert.assertEquals(true, cigarParty.haveParty(100, true));
 
     }
 
     @Test
-    public void test() {
-        //Error Conditions
+    public void testCigarPartyEdgeCases() {
 
-        Assert.assertEquals(, );
-        Assert.assertEquals(, );
+        Assert.assertEquals(true, cigarParty.haveParty(40, false));
+        Assert.assertEquals(true, cigarParty.haveParty(60, false));
+        Assert.assertEquals(true, cigarParty.haveParty(40, true));
+
+    }
+
+    @Test
+    public void testCigarPartyErrorConditions() {
+
+        Assert.assertEquals(false, cigarParty.haveParty(30, false));
+        Assert.assertEquals(false, cigarParty.haveParty(30, true));
+        Assert.assertEquals(false, cigarParty.haveParty(70, false));
 
     }
 
     @After
     public void teardown() {
-
-
-        System.out.println("After");
-
     }
 }

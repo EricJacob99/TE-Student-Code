@@ -8,35 +8,38 @@ import org.junit.Test;
 public class DateFashionTest {
 
     private DateFashion dateFashion;
+
     @Before
     public void setup() {
 
         dateFashion = new DateFashion();
-        System.out.println("Before");
 
     }
 
     @Test
-    public void test() {
-        // Happy Path
+    public void testDateFashionHappyPath() {
 
-        Assert.assertEquals(, );
-        Assert.assertEquals(, );
-
-    }
-
-    @Test
-    public void test() {
-        // Edge Cases
-
-        Assert.assertEquals(, );
-        Assert.assertEquals(, );
+        Assert.assertEquals(0, dateFashion.getATable(1,9));
+        Assert.assertEquals(0, dateFashion.getATable(9, 1));
+        Assert.assertEquals(1, dateFashion.getATable(3, 6));
+        Assert.assertEquals(1, dateFashion.getATable(6, 3));
+        Assert.assertEquals(2, dateFashion.getATable(9, 5));
+        Assert.assertEquals(2, dateFashion.getATable(5, 9));
 
     }
 
     @Test
-    public void test() {
-        //Error Conditions
+    public void testDateFashionEdgeCases() {
+
+        Assert.assertEquals(0, dateFashion.getATable(2, 5));
+        Assert.assertEquals(0, dateFashion.getATable(5, 2));
+        Assert.assertEquals(2, dateFashion.getATable(8, 5));
+        Assert.assertEquals(2, dateFashion.getATable(5, 8));
+
+    }
+
+    @Test
+    public void testDateFashionErrorConditions() {
 
         Assert.assertEquals(, );
         Assert.assertEquals(, );
@@ -45,9 +48,5 @@ public class DateFashionTest {
 
     @After
     public void teardown() {
-
-
-        System.out.println("After");
-
     }
 }
