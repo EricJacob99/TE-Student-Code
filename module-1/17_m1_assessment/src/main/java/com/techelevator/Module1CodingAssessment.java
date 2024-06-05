@@ -21,6 +21,10 @@ public class Module1CodingAssessment {
 		rentals.add(dieHardRental);
 		rentals.add(jurassicParkRental);
 		rentals.add(bambiRental);
+
+//		for (MovieRental rental : rentals) {
+//			System.out.println(rental.toString());
+//		}
 	}
 
 }
