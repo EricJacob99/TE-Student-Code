@@ -15,11 +15,11 @@ public class MovieRental {
         return format;
     }
 
-    public Boolean getPremium() {
+    public boolean getPremium() {
         return isPremium;
     }
 
-    public Double getRentalPrice() {
+    public double getRentalPrice() {
         double price = 0;
 
         if (format == "VHS"){
@@ -48,7 +48,7 @@ public class MovieRental {
         this.isPremium = isPremium;
     }
 
-    public double lateFee() {
+    public double lateFee(int daysLate) {
         if (daysLate >= 3){
             return 19.99;
         } else if (daysLate == 2){
@@ -62,7 +62,7 @@ public class MovieRental {
 
     @Override
     public String toString() {
-        return "MOVIE: " + title + " - FORMAT: " + format + " PRICE: " + rentalPrice;
+        return "MOVIE: " + getTitle() + " - FORMAT: " + getFormat() + " PRICE: " + getRentalPrice();
     }
 
 }
