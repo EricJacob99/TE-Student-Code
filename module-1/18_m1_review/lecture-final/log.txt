@@ -1,0 +1,6 @@
+06/04/2024 12:58:21: Order is: sesame yes
+06/05/2024 12:08:17: Order id: 123 has been sent to the order manager(kitchen)
+06/05/2024 12:16:22: Order id: 123 has been sent to the order manager(kitchen)
+06/05/2024 12:16:44: Order id: 456 has been sent to the order manager(kitchen)
+06/05/2024 12:18:29: Order id: 123 has been sent to the order manager(kitchen)
+06/05/2024 12:22:26: Order id: 123 has been sent to the order manager(kitchen)

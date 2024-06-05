@@ -1,0 +1,5 @@
+mustard,5
+beef burgers,100
+rat burgers,10
+ketchup,10
+onions,5
