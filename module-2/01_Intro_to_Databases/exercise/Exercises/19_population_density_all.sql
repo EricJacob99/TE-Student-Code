@@ -3,3 +3,6 @@
 -- Order the results by population density, lowest first.
 -- (56 rows)
 
+SELECT state_name, population, area, (population / area) as population_density
+FROM state
+ORDER BY population_density ASC;
