@@ -4,5 +4,5 @@
 
 SELECT city_name, state_abbreviation
 FROM city
-WHERE state_abbreviation = (SELECT state_abbreviation FROM park WHERE park_id IS NOT NULL)
+WHERE state_abbreviation IN (SELECT state_abbreviation FROM park_state WHERE park_id IN (SELECT park_id FROM park))
 ORDER BY state_abbreviation ASC, city_name ASC;

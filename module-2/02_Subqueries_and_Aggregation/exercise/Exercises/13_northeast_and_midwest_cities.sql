@@ -4,5 +4,5 @@
 
 SELECT city_name, state_abbreviation, population
 FROM city
-WHERE state_abbreviation = (SELECT state_abbreviation FROM state WHERE census_region IN ('Northeast', 'Midwest'))
+WHERE state_abbreviation IN (SELECT state_abbreviation FROM state WHERE census_region IN ('Northeast', 'Midwest'))
 ORDER BY state_abbreviation ASC, population DESC;
