@@ -2,3 +2,8 @@
 -- Order the results by actor from oldest to youngest.
 -- (20 rows)
 
+SELECT
+FROM
+WHERE
+JOIN
+ORDER BY

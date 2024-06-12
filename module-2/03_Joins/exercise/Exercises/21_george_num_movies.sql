@@ -3,3 +3,8 @@
 -- (59 rows)
 -- TIP: This one can be a little tricky. If you're off by one, look closer at each clause of your statement. There's something you can change to get a different result set.
 
+SELECT
+FROM
+WHERE
+JOIN
+ORDER BY

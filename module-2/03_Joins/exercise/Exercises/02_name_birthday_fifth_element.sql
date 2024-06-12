@@ -2,3 +2,8 @@
 -- Order the results alphabetically (A-Z) by name.
 -- (15 rows)
 
+SELECT
+FROM
+WHERE
+JOIN
+ORDER BY

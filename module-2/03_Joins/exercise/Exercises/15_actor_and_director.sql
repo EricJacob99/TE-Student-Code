@@ -2,3 +2,8 @@
 -- Order the results by movie title (A-Z)
 -- (73 rows)
 
+SELECT
+FROM
+WHERE
+JOIN
+ORDER BY

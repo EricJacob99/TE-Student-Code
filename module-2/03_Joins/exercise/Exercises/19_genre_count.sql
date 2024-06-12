@@ -2,3 +2,8 @@
 -- Order the results from the highest movie count to the lowest.
 -- (19 rows, the highest expected count is around 400).
 
+SELECT
+FROM
+WHERE
+JOIN
+ORDER BY

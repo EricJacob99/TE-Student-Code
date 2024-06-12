@@ -2,3 +2,8 @@
 -- Order the results by release date, earliest to latest.
 -- (220 rows)
 
+SELECT
+FROM
+WHERE
+JOIN
+ORDER BY

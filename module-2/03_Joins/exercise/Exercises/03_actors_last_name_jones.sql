@@ -2,3 +2,8 @@
 -- Order the results by the actor names (A-Z) and then by movie title (A-Z).
 -- (48 rows)
 
+SELECT
+FROM
+WHERE
+JOIN
+ORDER BY

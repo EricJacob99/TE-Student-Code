@@ -2,3 +2,8 @@
 -- Order the results by title (A-Z).
 -- (81 rows)
 
+SELECT
+FROM
+WHERE
+JOIN
+ORDER BY

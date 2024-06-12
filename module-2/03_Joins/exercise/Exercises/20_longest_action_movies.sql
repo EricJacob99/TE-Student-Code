@@ -2,3 +2,8 @@
 -- Order the movies by length (highest first), then by release date (latest first).
 -- (5 rows, expected lengths around 180 - 200)
 
+SELECT
+FROM
+WHERE
+JOIN
+ORDER BY

@@ -2,3 +2,8 @@
 -- Order the results alphabetically by movie title.
 -- (4 rows)
 
+SELECT
+FROM
+WHERE
+JOIN
+ORDER BY
