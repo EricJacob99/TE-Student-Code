@@ -57,11 +57,11 @@ public class JdbcDepartmentDao implements DepartmentDao {
 	@Override
 	public Department createDepartment(Department department) {
 		Department newDepartment = null;
-		String sql = "INSERT INTO department (department_id, name) " +
-				"VALUES (?, ?) RETURNING department_id;";
+		String sql = "INSERT INTO department (name) " +
+				"VALUES (?) RETURNING department_id;";
 		try {
 			int newDepartmentId = jdbcTemplate.queryForObject(sql, int.class,
-					department.getName(), department.getId());
+					department.getName());
 
 			newDepartment = getDepartmentById(newDepartmentId);
 		} catch (CannotGetJdbcConnectionException e) {
@@ -75,7 +75,7 @@ public class JdbcDepartmentDao implements DepartmentDao {
 	@Override
 	public Department updateDepartment(Department department) {
 		Department updatedDepartment = null;
-		String sql = "UPDATE department SET name = ?, department_id = ? " +
+		String sql = "UPDATE department SET name = ?" +
 				"WHERE department_id = ?;";
 		try {
 			int numberOfRows = jdbcTemplate.update(sql, department.getName(), department.getId());
@@ -96,8 +96,11 @@ public class JdbcDepartmentDao implements DepartmentDao {
 	@Override
 	public int deleteDepartmentById(int id) {
 		int numberOfRows = 0;
+		String employeeSql = "UPDATE employee SET department_id = ? " +
+				"WHERE employee_id = (SELECT employee.employee_id FROM employee JOIN project_employee ON employee.employee_id = project_employee.employee_id WHERE department_id = ?);";
 		String sql = "DELETE FROM department WHERE department_id = ?;";
 		try {
+			jdbcTemplate.update(employeeSql, id, id);
 			numberOfRows = jdbcTemplate.update(sql, id);
 		} catch (CannotGetJdbcConnectionException e) {
 			throw new DaoException("Unable to connect to server or database", e);
