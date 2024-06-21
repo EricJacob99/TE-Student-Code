@@ -28,12 +28,14 @@ public class JdbcProjectDao implements ProjectDao {
 		Project project = null;
 		String sql = PROJECT_SELECT +
 				" WHERE p.project_id=?";
-
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);
-		if (results.next()) {
-			project = mapRowToProject(results);
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);
+			if (results.next()) {
+				project = mapRowToProject(results);
+			}
+		} catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
 		}
-
 		return project;
 	}
 
@@ -41,13 +43,15 @@ public class JdbcProjectDao implements ProjectDao {
 	public List<Project> getProjects() {
 		List<Project> allProjects = new ArrayList<>();
 		String sql = PROJECT_SELECT;
-
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-		while (results.next()) {
-			Project projectResult = mapRowToProject(results);
-			allProjects.add(projectResult);
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+			while (results.next()) {
+				Project projectResult = mapRowToProject(results);
+				allProjects.add(projectResult);
+			}
+		} catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
 		}
-
 		return allProjects;
 	}
 
