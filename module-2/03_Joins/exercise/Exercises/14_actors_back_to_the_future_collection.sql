@@ -6,5 +6,6 @@ FROM person
 JOIN movie_actor ON person.person_id = movie_actor.actor_id
 JOIN movie ON movie_actor.movie_id = movie.movie_id
 JOIN collection ON movie.collection_id = collection.collection_id
-WHERE person_id = (SELECT actor_id FROM movie_actor WHERE movie_id = (SELECT movie_id FROM movie WHERE collection_id = (SELECT collection_id FROM collection WHERE collection_name = 'Back to the Future Collection')))
+WHERE person_id IN (SELECT actor_id FROM movie_actor WHERE movie_id IN (SELECT movie_id FROM movie WHERE collection_id = (SELECT collection_id FROM collection WHERE collection_name = 'Back to the Future Collection')))
+GROUP BY person_name
 ORDER BY person_name ASC;

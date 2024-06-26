@@ -2,8 +2,9 @@
 -- Order the results by movie title (A-Z)
 -- (73 rows)
 
-SELECT
-FROM
-JOIN
-WHERE
-ORDER BY
+SELECT title, person_name
+FROM movie
+JOIN movie_actor ON movie.movie_id = movie_actor.movie_id
+JOIN person ON movie.director_id = person.person_id
+WHERE director_id IN (actor_id)
+ORDER BY title ASC;

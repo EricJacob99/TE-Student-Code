@@ -2,8 +2,9 @@
 -- Order the results from the highest movie count to the lowest.
 -- (19 rows, the highest expected count is around 400).
 
-SELECT
-FROM
-JOIN
-WHERE
-ORDER BY
+SELECT genre_name, COUNT(movie_genre.movie_id) AS num_of_movies
+FROM movie
+JOIN movie_genre ON movie.movie_id = movie_genre.movie_id
+JOIN genre ON movie_genre.genre_id = genre.genre_id
+GROUP BY genre_name
+ORDER BY num_of_movies DESC;
