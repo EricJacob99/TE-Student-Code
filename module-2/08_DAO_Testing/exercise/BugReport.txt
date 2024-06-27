@@ -2,51 +2,51 @@ Bug 1
 -----
 Test that demonstrates problem:
 
-//
+//getTimesheetsByProjectId_with_valid_project_id_returns_list_of_all_timesheets_for_project
 
 Expected output:
 
-//
+// 3
 
 Actual output:
 
-//
+// 2
 
 How did you fix this bug?
 
-//
+//getTimesheetsByProjectId was filtering by employeeId. I replaced employee_id with project_id
 
 Bug 2
 -----
 Test that demonstrates problem:
 
-//
+//getTimesheetsByEmployeeId_with_valid_employee_id_returns_list_of_timesheets_for_employee
 
 Expected output:
 
-//
+// 2
 
 Actual output:
 
-//
+// 1
 
 How did you fix this bug?
 
-//
+// I replaced the timesheet.add so it no longer created a new timesheet list for each timesheet
 
 Bug 3
 -----
 Test that demonstrates problem:
 
-//
+//createTimesheet_creates_timesheet
 
 Expected output:
 
-//
+// a new timesheet Id
 
 Actual output:
 
-//
+//data integrity violation
 
 How did you fix this bug?
 
@@ -56,15 +56,15 @@ Bug 4
 -----
 Test that demonstrates problem:
 
-//
+//updateTimesheet_updates_timesheet
 
 Expected output:
 
-//
+// updated timesheet
 
 Actual output:
 
-//
+//data integrity violation
 
 How did you fix this bug?
 

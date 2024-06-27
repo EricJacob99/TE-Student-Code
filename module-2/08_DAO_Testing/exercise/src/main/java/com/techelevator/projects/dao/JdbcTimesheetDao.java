@@ -47,9 +47,8 @@ public class JdbcTimesheetDao implements TimesheetDao {
                 "ORDER BY timesheet_id;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, employeeId);
-            if (results.next()) {
-                Timesheet timesheet = mapRowToTimesheet(results);
-                timesheets.add(timesheet);
+            while (results.next()) {
+                timesheets.add(mapRowToTimesheet(results));
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -64,13 +63,12 @@ public class JdbcTimesheetDao implements TimesheetDao {
         List<Timesheet> timesheets = new ArrayList<>();
         String sql = "SELECT timesheet_id, employee_id, project_id, date_worked, hours_worked, billable, description " +
                 "FROM timesheet " +
-                "WHERE employee_id = ? " +
+                "WHERE project_id = ? " +
                 "ORDER BY timesheet_id;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);
             while (results.next()) {
-                Timesheet timesheet = mapRowToTimesheet(results);
-                timesheets.add(timesheet);
+                timesheets.add(mapRowToTimesheet(results));
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
