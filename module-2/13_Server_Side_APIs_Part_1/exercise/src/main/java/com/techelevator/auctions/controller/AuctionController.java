@@ -50,4 +50,26 @@ public class AuctionController {
         }
     }
 
+    @RequestMapping(path = "/auctions?price_like={price}", method = RequestMethod.GET)
+    public List<Auction> searchByPrice(@PathVariable double price) {
+        List<Auction> auctions;
+        auctions = auctionDao.getAuctionsByMaxBid(price);
+        if (auctions == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Auctions not found.");
+        } else {
+            return auctions;
+        }
+    }
+
+    @RequestMapping(path = "/auctions?title_like={title}", method = RequestMethod.GET)
+    public List<Auction> searchByTitle(@PathVariable String title) {
+        List<Auction> auctions;
+        auctions = auctionDao.getAuctionsByTitle(title);
+        if (auctions == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Auctions not found.");
+        } else {
+            return auctions;
+        }
+    }
+
 }

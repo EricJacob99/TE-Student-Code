@@ -1,8 +1,7 @@
 package com.techelevator.auctions.model;
 
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 public class Auction {
 
@@ -13,7 +12,7 @@ public class Auction {
     private String description;
     @NotBlank(message = "The user field must not be blank.")
     private String user;
-    @DecimalMin(message = "The currentBid field must be greater than 0.", value = "0.0")
+    @Positive(message = "The currentBid field must be greater than 0.")
     private double currentBid;
 
     public Auction() {

@@ -2,6 +2,7 @@ package com.techelevator.auctions.controller;
 
 import java.util.List;
 
+import com.techelevator.auctions.exception.DaoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -56,5 +57,21 @@ public class AuctionController {
         return auctionDao.createAuction(auction);
     }
 
+    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
+    public Auction update(@Valid @RequestBody Auction auction, @PathVariable int id) {
+        // The id on the path takes precedence over the id in the request body, if any
+        auction.setId(id);
+        try {
+            Auction updatedAuction = auctionDao.updateAuction(auction);
+            return updatedAuction;
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Auction not found");
+        }
+    }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable int id) {
+        auctionDao.deleteAuctionById(id);
+    }
 }
