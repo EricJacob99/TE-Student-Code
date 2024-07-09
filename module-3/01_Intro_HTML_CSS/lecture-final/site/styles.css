@@ -1,0 +1,34 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+}
+
+h1 {
+    font-size: 48px;
+    color: darkgreen;
+}
+
+h2, h3 {
+    font-size: 32px;
+    color:rgb(59, 135, 5);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+
+.thumbnail {
+    height: 150px;
+   
+}
+
+section {
+    background-color: lightgreen;
+}
+
+#beerlist {
+    background-color: forestgreen;
+}
+
+#beerlisttext {
+    color: antiquewhite;
+}

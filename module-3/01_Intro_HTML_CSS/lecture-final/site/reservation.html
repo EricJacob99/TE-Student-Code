@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Bits and Bytes Menu</h1>
+        <h2>Welcome to the Cheesiest Site Ever!</h2>
+        <nav>
+            <a href="reservation.html">Make Reservation</a>  |  <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <h2>Reservation Info</h2>
+        <form method="POST" action="localhost:8080/reservation">
+        
+           <div>
+            <label for="reservationName">Name: </label>
+            <input type="text" name="reservationName" id="reservationName">
+           </div>
+        
+        
+           <div>
+            <label for="reservationDate">Date of Reservation?</label>
+            <input type="date" name="reservationDate" id="reservationDate">
+           </div>
+
+
+             <input type="submit" value="Send Me!">
+             <input type="button" value="Cancel">
+             <a href="https://doordash.com">
+                <input type="button" value="Call Doordash instead">
+             </a>
+            </form>
+
+    </main>
+    
+</body>
+</html>
