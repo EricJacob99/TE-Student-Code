@@ -7,6 +7,47 @@ html {
   font-size: 16px;
 }
 
+aside {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  background-color: white;
+  border: solid blue;
+}
+aside > img {
+  width: 70%;
+  margin: auto;
+  margin-top: 10%;
+}
+
+main {
+  margin-left: 200px;
+  height: 100%;
+  width: 100%;
+}
+
+aside > nav > ul > li {
+  margin: auto;
+  text-align: center;
+  align-content: center;
+  text-transform: uppercase;
+  list-style: none;
+  margin-bottom: 10px;
+  border-bottom: 1px solid blue;
+  padding-top: 10px;
+}
+
+aside > nav > ul > li > a:first-child {
+  font-weight: bold;
+  color: blue;
+}
+
+aside > nav > ul > li > a:not(:first-child) {
+  font-weight: bold;
+  color: blue;
+  text-decoration-line: none;
+}
+
 body {
   background-color: rgba(192, 192, 192, 0.1);
 }
