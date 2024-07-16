@@ -8,6 +8,15 @@ header {
   padding: 20px;
 }
 
+header {
+  display: flex;
+  flex-direction: row;
+}
+header>nav>ul{
+  display: flex;
+  flex-direction: row;
+}
+
 .logo {
   width: 140px;
 }
