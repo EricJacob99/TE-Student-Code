@@ -20,6 +20,14 @@
  * @returns {boolean} true if they are admitted
  */
 
+function isAdmitted(gpa,satScore=0,recommendation=false) {
+    if ((gpa>4.0)||(satScore>1300)||(gpa>3.0 && recommendation==true)||(satScore>1200 && recommendation==true)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 /**
  * Write a function called useParameterToFilterArray that accepts a filter function
  * as a parameter. Use this function to filter unfilteredArray and return the result.
@@ -28,6 +36,10 @@
  * @returns {number[]} the filtered array
  */
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
+
+function useParameterToFilterArray(filterFunction) {
+
+}
 
 /**
  * Write a function called makeNumber that takes two strings
@@ -41,6 +53,10 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @param {string} [second=''] the second string of digits to concatenate
  * @returns {number} the resultant number
  */
+
+function makeNumber(first,second='') {
+    return parseInt(first + second)
+}
 
 /**
  * Write a function called addAll that takes an unknown number of parameters
