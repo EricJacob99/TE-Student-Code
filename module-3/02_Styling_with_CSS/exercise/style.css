@@ -8,11 +8,12 @@ html {
 }
 
 aside {
+  vertical-align: top;
   position: fixed;
   width: 200px;
   height: 100%;
   background-color: white;
-  border: solid blue;
+  border-right: 1px solid blue;
 }
 aside > img {
   width: 70%;
@@ -29,7 +30,7 @@ main {
 aside > nav > ul > li {
   margin: auto;
   text-align: center;
-  align-content: center;
+  align-self: center;
   text-transform: uppercase;
   list-style: none;
   margin-bottom: 10px;
