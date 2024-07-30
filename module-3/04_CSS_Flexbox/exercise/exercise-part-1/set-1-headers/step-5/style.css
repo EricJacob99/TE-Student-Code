@@ -8,17 +8,6 @@ header {
   padding: 20px;
 }
 
-header {
-  display: flex;
-  flex-direction: row;
-}
-header>nav>ul{
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  justify-content: center;
-}
-
 .logo {
   width: 140px;
 }
@@ -49,6 +38,15 @@ a:hover {
   text-decoration: underline;
 }
 
-.my-account img {
-  width: 40px;
+nav ul {
+  display: flex;
+}
+
+header {
+  display: flex;
+  align-items: center;
+}
+
+.spacer {
+  flex-grow: 1;
 }

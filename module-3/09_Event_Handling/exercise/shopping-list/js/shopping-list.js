@@ -19,7 +19,7 @@ const groceries = [
  */
 function setPageTitle() {
   const title = document.getElementById('title');
-  title.textContent = pageTitle;
+  title.innerText = pageTitle;
 }
 
 /**
@@ -29,7 +29,7 @@ function displayGroceries() {
   const ul = document.querySelector('ul');
   groceries.forEach((item) => {
     const li = document.createElement('li');
-    li.textContent = item.name;
+    li.innerText = item.name;
     const checkCircle = document.createElement('i');
     checkCircle.setAttribute('class', 'far fa-check-circle');
     li.appendChild(checkCircle);
@@ -40,4 +40,45 @@ function displayGroceries() {
 document.addEventListener('DOMContentLoaded', () => {
   setPageTitle();
   displayGroceries();
-})
+
+  const listItems = document.querySelectorAll('li');
+  const toggleAllButton = document.getElementById('toggleAll');
+  let allItemsIncomplete = true;
+
+  listItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      if (!item.classList.contains('completed')) {
+        item.classList.add('completed');
+        item.querySelector('i').classList.add('completed');
+      }
+    });
+
+    item.addEventListener('dblclick', () => {
+      if (item.classList.contains('completed')) {
+        item.classList.remove('completed');
+        item.querySelector('i').classList.remove('completed');
+      }
+    });
+  });
+
+  toggleAllButton.addEventListener('click', () => {
+    listItems.forEach((item) => {
+      if (allItemsIncomplete) {
+        item.classList.add('completed');
+        item.querySelector('i').classList.add('completed');
+      } else {
+        item.classList.remove('completed');
+        item.querySelector('i').classList.remove('completed');
+      }
+    });
+
+    if (allItemsIncomplete) {
+      toggleAllButton.textContent = 'Mark All Incomplete';
+    } else {
+      toggleAllButton.textContent = 'Mark All Complete';
+    }
+
+    allItemsIncomplete = !allItemsIncomplete;
+  });
+
+});

@@ -1,5 +1,10 @@
 <template>
   <div id="book-app">
+    <nav>
+      <router-link to="/">Home</router-link>
+      <span class="separator">|</span>
+      <router-link to="/myBooks">My Books</router-link>
+    </nav>
     <router-view />
   </div>
 </template>

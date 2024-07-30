@@ -38,7 +38,7 @@ function isAdmitted(gpa,satScore=0,recommendation=false) {
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
 
 function useParameterToFilterArray(filterFunction) {
-
+    return unfilteredArray.filter(filterFunction);
 }
 
 /**
@@ -66,11 +66,19 @@ function makeNumber(first,second='') {
  * @returns {number} the sum of all the parameters (or arguments)
  */
 
+function addAll(...number) {
+    return number.reduce((sum, element) => sum + element, 0);
+}
+
 /*
  * Write and document a function called makeHappy that takes
  * an array and prepends 'Happy ' to the beginning of all the
  * words and returns them as a new array. Use the `map` function.
  */
+
+function makeHappy(array) {
+    return array.map(word => 'Happy ' + word);
+}
 
 /*
  * Write and document a function called getFullAddressesOfProperties
@@ -93,6 +101,12 @@ function makeNumber(first,second='') {
  * Use `map` and an anonymous function.
  */
 
+function getFullAddressesOfProperties(properties) {
+    return properties.map(property => {
+        return `${String(property.streetNumber)} ${String(property.streetName)} ${String(property.streetType)} ${String(property.city)} ${property.state} ${String(property.zip)}`;
+    });
+}
+
 /** 
  * Write and document a function called findLargest that uses `forEach`
  * to find the largest element in an array.
@@ -108,6 +122,16 @@ function makeNumber(first,second='') {
  * @returns {number|string} the number or string that is largest
  **/
 
+function findLargest(searchArray) {
+    let largest = searchArray[0];
+
+    searchArray.forEach(element => {
+        if (String(element) > String(largest)) {
+            largest = element;
+        }
+    });
+    return largest
+};
 
 /*
  * CHALLENGE
