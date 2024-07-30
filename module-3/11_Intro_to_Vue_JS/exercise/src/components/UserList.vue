@@ -11,12 +11,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="text" id="firstNameFilter" v-model="filter.firstName" /></td>
-        <td><input type="text" id="lastNameFilter" v-model="filter.lastName" /></td>
-        <td><input type="text" id="usernameFilter" v-model="filter.username" /></td>
-        <td><input type="text" id="emailFilter" v-model="filter.emailAddress" /></td>
+        <td><input type="text" id="firstNameFilter" v-model="search.firstName" /></td>
+        <td><input type="text" id="lastNameFilter" v-model="search.lastName" /></td>
+        <td><input type="text" id="usernameFilter" v-model="search.username" /></td>
+        <td><input type="text" id="emailFilter" v-model="search.emailAddress" /></td>
         <td>
-          <select id="statusFilter" v-model="filter.status">
+          <select id="statusFilter" v-model="search.status">
             <option value="">Show All</option>
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
@@ -25,9 +25,9 @@
       </tr>
       <!-- user listing goes here -->
       <tr
-          v-for="user in filteredList"
-          v-bind:key="user.id"
-          v-bind:class="{ deactivated: user.status === 'Inactive' }"
+          v-for="(user,index) in filteredList"
+          v-bind:key="index"
+          v-bind:class="{ inactive: user.status === 'Inactive' }"
         >
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -43,7 +43,7 @@
 export default {
   data() {
     return {
-      filter: {
+      search: {
         firstName: '',
         lastName: '',
         username: '',
@@ -63,37 +63,37 @@ export default {
   computed: {
     filteredList() {
       let filteredUsers = this.users;
-      if (this.filter.firstName != "") {
+      if (this.search.firstName != "") {
         filteredUsers = filteredUsers.filter((user) =>
           user.firstName
             .toLowerCase()
-            .includes(this.filter.firstName.toLowerCase())
+            .includes(this.search.firstName.toLowerCase())
         );
       }
-      if (this.filter.lastName != "") {
+      if (this.search.lastName != "") {
         filteredUsers = filteredUsers.filter((user) =>
           user.lastName
             .toLowerCase()
-            .includes(this.filter.lastName.toLowerCase())
+            .includes(this.search.lastName.toLowerCase())
         );
       }
-      if (this.filter.username != "") {
+      if (this.search.username != "") {
         filteredUsers = filteredUsers.filter((user) =>
           user.username
             .toLowerCase()
-            .includes(this.filter.username.toLowerCase())
+            .includes(this.search.username.toLowerCase())
         );
       }
-      if (this.filter.emailAddress != "") {
+      if (this.search.emailAddress != "") {
         filteredUsers = filteredUsers.filter((user) =>
           user.emailAddress
             .toLowerCase()
-            .includes(this.filter.emailAddress.toLowerCase())
+            .includes(this.search.emailAddress.toLowerCase())
         );
       }
-      if (this.filter.status != "") {
+      if (this.search.status != "") {
         filteredUsers = filteredUsers.filter((user) =>
-          user.status === this.filter.status
+          user.status === this.search.status
         );
       }
       return filteredUsers;
