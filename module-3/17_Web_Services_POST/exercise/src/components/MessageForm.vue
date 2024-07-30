@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import messageService from '../services/MessageService';
+import MessageService from '../services/MessageService';
 
 export default {
   props: {
@@ -47,15 +47,32 @@ export default {
       }
       // Check for add or edit
       if (this.editMessage.id === 0) {
-        
+
         // TODO - Do an add, then navigate Home on success.
         // For errors, call handleErrorResponse
-
+        MessageService.create(this.editMessage)
+          .then((response) => {
+            if (response.status === 201) {
+              this.$router.push({
+                name: "TopicDetailsView",
+                params: { topicId: this.editMessage.topicId },
+              });
+            } else {
+              this.handleErrorResponse(response, "adding");
+            }
+          });
       } else {
-        
+
         // TODO - Do an edit, then navigate back to Message Details on success
         // For errors, call handleErrorResponse
-
+        MessageService.update(this.editMessage.id, this.editMessage)
+          .then(response => {
+            if (response.status === 200) {
+              this.$router.push({ name: 'MessageDetailsView', params: { messageId: this.editMessage.id } });
+            } else {
+              this.handleErrorResponse(response, 'updating');
+            }
+          });
       }
     },
     cancelForm() {
@@ -64,10 +81,10 @@ export default {
     handleErrorResponse(error, verb) {
       if (error.response) {
         if (error.response.status == 404) {
-          this.$router.push({name: 'NotFoundView'});
+          this.$router.push({ name: 'NotFoundView' });
         } else {
           this.$store.commit('SET_NOTIFICATION',
-          `Error ${verb} message. Response received was "${error.response.statusText}".`);
+            `Error ${verb} message. Response received was "${error.response.statusText}".`);
         }
       } else if (error.request) {
         this.$store.commit('SET_NOTIFICATION', `Error ${verb} message. Server could not be reached.`);
@@ -98,5 +115,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

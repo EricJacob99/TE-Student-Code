@@ -4,7 +4,8 @@
   </div>
   <div v-else>
     <nav>
-      <router-link v-bind:to="{ name: 'TopicDetailsView', params: { topicId: topicId } }">Back to Topic Details</router-link>
+      <router-link v-bind:to="{ name: 'TopicDetailsView', params: { topicId: topicId } }">Back to Topic
+        Details</router-link>
     </nav>
     <message-details v-bind:message="message" />
   </div>
@@ -12,12 +13,13 @@
 
 <script>
 import MessageDetails from '../components/MessageDetails.vue';
+import MessageService from '../services/MessageService.js';
 
 export default {
   components: {
     MessageDetails,
   },
-  data(){
+  data() {
     return {
       topicId: this.$route.params.topicId,
       message: {},
@@ -26,9 +28,13 @@ export default {
   },
   methods: {
     getMessage(id) {
-      
-      // TODO - Get data from API and set `topics` property
 
+      // TODO - Get data from API and set `topics` property
+      MessageService.getMessage(id)
+        .then(response => {
+          this.message = response.data;
+          this.isLoading = false;
+        });
     },
   },
   created() {
@@ -37,5 +43,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

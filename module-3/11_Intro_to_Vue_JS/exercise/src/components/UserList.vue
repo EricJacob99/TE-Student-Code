@@ -26,7 +26,7 @@
       <!-- user listing goes here -->
       <tr
           v-for="user in filteredList"
-          v-bind:key="user"
+          v-bind:key="user.id"
           v-bind:class="{ deactivated: user.status === 'Inactive' }"
         >
           <td>{{ user.firstName }}</td>
@@ -44,11 +44,11 @@ export default {
   data() {
     return {
       filter: {
-        firstName: "",
-        lastName: "",
-        username: "",
-        emailAddress: "",
-        status: ""
+        firstName: '',
+        lastName: '',
+        username: '',
+        emailAddress: '',
+        status: ''
       },
       users: [
         { firstName: 'John', lastName: 'Smith', username: 'jsmith', emailAddress: 'jsmith@gmail.com', status: 'Active' },
